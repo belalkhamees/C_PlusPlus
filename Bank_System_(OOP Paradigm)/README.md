@@ -1,4 +1,3 @@
-<<<<<<< HEAD:Bank_System_(OOP Paradigm)/README.md.md
 # Bank System (OOP)
 
 A console-based Bank Management System developed in C++ using Object-Oriented Programming (OOP) principles.
