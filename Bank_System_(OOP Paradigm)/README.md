@@ -17,8 +17,9 @@ A console-based Bank Management System developed in C++ using Object-Oriented Pr
 ## Concepts Used
 
 - Object-Oriented Programming (OOP)
-- Inheritance
 - Encapsulation
+- Abstraction
+- Inheritance
 - Polymorphism
 - File Handling
 - Classes and Objects
