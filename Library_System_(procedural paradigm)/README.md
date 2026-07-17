@@ -30,7 +30,6 @@ A console-based Library Management System developed in C++ using the Procedural 
 
 - C++
 - Visual Studio
-- Windows Console API
 
 ## Project Structure
 
@@ -41,16 +40,11 @@ A console-based Library Management System developed in C++ using the Procedural 
 - Library expansion
 - Console user interface
 
-## How to Run
-
-1. Open the solution (`.sln`) file in Visual Studio.
-2. Build the project.
-3. Run the application.
-4. Enter the initial library capacity.
-5. Use the menu to manage books.
 
 ## Author
 
 **Belal Khamees**
 
 GitHub: https://github.com/belalkhamees
+
+
