@@ -1,111 +1,117 @@
-# Bank System (OOP)
+# 🏦 Bank Management System (C++)
 
-A console-based Bank Management System developed in C++ using Object-Oriented Programming (OOP) principles.
+A console-based **Bank Management System** developed in **C++** as a course project to practice Object-Oriented Programming (OOP), file handling, and software design.
 
-## Features
+The application simulates a banking environment with three user roles: **Admin**, **Employee**, and **Client**, each with its own permissions and operations. Data is stored in text files to maintain persistence between program executions.
 
-- Add, edit, search, and delete clients.
-- Add, edit, search, and delete employees.
-- Admin management.
-- Deposit and withdraw money.
-- Transfer money between clients.
-- Login system for Admins and Employees.
-- Persistent data storage using text files.
-- Input validation for user data.
-- Menu-driven console interface.
+---
 
-## Concepts Used
+## ✨ Features
 
-- Object-Oriented Programming (OOP)
-- Inheritance
-- Encapsulation
-- Polymorphism
-- File Handling
-- Classes and Objects
-- Dynamic Memory
-- Templates
-- Input Validation
+### 👤 Authentication
 
-## Technologies
+* Secure login system
+* Role-based access (Admin, Employee, Client)
 
-- C++
-- Visual Studio
-- Text Files for Data Storage
+### 👨‍💼 Admin
 
-## Project Structure
+* Manage employees
+* Manage clients
+* View and update personal information
 
-- Client Management
-- Employee Management
-- Admin Management
-- File Manager
-- Validation
-- Parser
-- Screens
-- Data Entry
-- File Helper
+### 👨‍💻 Employee
 
-## Author
+* Manage clients
+* View salary
+* Update personal information
+
+### 👤 Client
+
+* View account information
+* Deposit and withdraw money
+* Transfer money
+* Update password
+
+---
+
+## 🛠️ Technologies Used
+
+* C++
+* Object-Oriented Programming (OOP)
+* STL
+* File Handling (`fstream`)
+* Windows Console Application
+
+---
+
+## 📚 OOP Concepts
+
+This project demonstrates the use of:
+
+* Encapsulation
+* Inheritance
+* Abstraction
+* Polymorphism
+* Interfaces (Abstract Classes)
+* Static Members
+
+---
+
+📂 Project Structure
+BankSystem
+│
+├── Person
+├── Client
+├── Employee
+├── Admin
+│
+├── ClientManager
+├── EmployeeManager
+├── AdminManager
+│
+├── Validation
+├── DataEntry
+├── Parser
+├── DataStorage
+│
+├── FilesHelper
+├── FileManager
+├── DataSourceInterface
+│
+├── Screens
+└── Main
+
+---
+
+## 💾 Data Persistence
+
+The system stores all data in text files and automatically loads and saves changes during program execution.
+
+---
+
+## 🎯 What I Learned
+
+Through this project, I gained practical experience with:
+
+* Designing applications using OOP principles
+* Building a multi-class project with clear responsibilities
+* File handling and data persistence
+* Dynamic memory management
+* Creating a menu-driven console application
+
+---
+
+## 🚀 Future Improvements
+
+* Replace raw pointers with smart pointers
+* Use a database instead of text files
+* Improve security with password hashing
+* Add transaction history
+* Develop a GUI version
+
+---
+
+## 👨‍💻 Author
 
 **Belal Khamees**
 
-- GitHub: https://github.com/belalkhamees
-
-
-
-=======
-# Bank System (OOP)
-
-A console-based Bank Management System developed in C++ using Object-Oriented Programming (OOP) principles.
-
-## Features
-
-- Add, edit, search, and delete clients.
-- Add, edit, search, and delete employees.
-- Admin management.
-- Deposit and withdraw money.
-- Transfer money between clients.
-- Login system for Admins and Employees.
-- Persistent data storage using text files.
-- Input validation for user data.
-- Menu-driven console interface.
-
-## Concepts Used
-
-- Object-Oriented Programming (OOP)
-- Encapsulation
-- Abstraction
-- Inheritance
-- Polymorphism
-- File Handling
-- Classes and Objects
-- Dynamic Memory
-- Templates
-- Input Validation
-
-## Technologies
-
-- C++
-- Visual Studio
-- Text Files for Data Storage
-
-## Project Structure
-
-- Client Management
-- Employee Management
-- Admin Management
-- File Manager
-- Validation
-- Parser
-- Screens
-- Data Entry
-- File Helper
-
-## Author
-
-**Belal Khamees**
-
-- GitHub: https://github.com/belalkhamees
-
-
-
->>>>>>> d01f71da3e92b2d5f1731a7df3be885ad11d294c:Bank_System_(OOP Paradigm)/README.md
