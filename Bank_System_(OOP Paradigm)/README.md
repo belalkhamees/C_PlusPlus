@@ -57,30 +57,37 @@ This project demonstrates the use of:
 
 ---
 
-📂 Project Structure
+## 📂 Project Structure
+
+```text
 BankSystem
 │
-├── Person
-├── Client
-├── Employee
-├── Admin
+├── Core Classes
+│   ├── Person
+│   ├── Client
+│   ├── Employee
+│   └── Admin
 │
-├── ClientManager
-├── EmployeeManager
-├── AdminManager
+├── Managers
+│   ├── ClientManager
+│   ├── EmployeeManager
+│   └── AdminManager
 │
-├── Validation
-├── DataEntry
-├── Parser
-├── DataStorage
+├── Utilities
+│   ├── Validation
+│   ├── DataEntry
+│   ├── Parser
+│   └── DataStorage
 │
-├── FilesHelper
-├── FileManager
-├── DataSourceInterface
+├── File Handling
+│   ├── FilesHelper
+│   ├── FileManager
+│   └── DataSourceInterface
 │
 ├── Screens
+│
 └── Main
-
+```
 ---
 
 ## 💾 Data Persistence
