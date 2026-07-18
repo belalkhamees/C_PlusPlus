@@ -1,0 +1,580 @@
+// Assignment 4 - NESTED LOOPS AND FLAG CONCEPT - arrays
+
+#include <iostream>
+using namespace std;
+int main (){
+    int num;
+    cin >> num;
+for(int i =1; i <= num; i++){
+    for(int j = 1; j<= i; j++){
+        cout << i;
+    }
+    cout<< endl;
+}
+}
+//===============================
+#include <iostream>
+using namespace std;
+int main (){
+    int num;
+    cin >> num;
+
+    for(int i = 1; i <=num; i++){
+        for(int j=1; j<=i; j++){
+            if(j == 1 || j == i || i == num){
+                cout << "* ";
+            }
+            else{
+                cout << " ";
+            }
+        }
+        cout << endl;
+    }
+}
+//===========================
+#include <iostream>
+using namespace std;
+int main (){
+
+    int num;
+    cin >> num;
+for(int i =num; i >=1 ; i--){
+    for(int j = 1; j <= i ; j++){
+        cout << "* ";
+    }
+    cout<< endl;
+}
+}
+//==============================
+#include <iostream>
+using namespace std;
+int main (){
+int num; 
+cin >> num;
+
+for(int i = 1; i<= num; i++){
+    bool isPrime = true;
+    for(int j = 2; j <=i/2; j++){
+      if(i%j == 0){
+      isPrime = false;
+      break;
+      }
+    }
+    if(i == 1 || isPrime == false){
+    cout << i << " ";
+    }
+}
+}
+//===============================
+#include <iostream>
+using namespace std;
+
+int main() {
+    char arr[100000];
+    cin >> arr;
+
+    for(int i = 0; arr[i] != '\0'; i++){
+        switch(arr[i]){
+            case '0': cout << "zero "; break;
+            case '1': cout << "one ";  break;
+            case '2': cout << "two "; break;
+            case '3': cout << "three "; break;
+            case '4': cout << "four "; break;
+            case '5': cout << "five "; break;
+            case '6': cout << "six "; break;
+            case '7': cout << "seven "; break;
+            case '8': cout << "eight "; break;
+            case '9': cout << "nine "; break;
+        }
+    }
+}
+//==============================
+#include <iostream>
+using namespace std;
+int main (){
+int size;
+cin >> size;
+int even = 0 , odd = 0;
+int arr[size];
+for(int i = 0; i < size ; i++){
+    cin >> arr[i];
+if(arr[i] %2 == 0) even ++;
+   else{
+    odd++;
+   }
+}
+cout << "odd: " << odd << endl;
+cout << "even: " << even ;
+}
+//===============================
+#include <iostream>
+using namespace std;
+int main (){
+int size, index = -1;
+cin >> size;
+int arr[size], target;
+for(int i = 0; i < size; i++){
+    cin >> arr[i];
+}
+cin >> target;
+     for(int i = 0; i<size; i++){
+    if( arr[i] == target ){
+        index = i;
+        break;
+    }
+}
+cout << index;
+}
+//===============================
+#include <iostream>
+using namespace std;
+int main (){
+int size;
+cin >> size;
+int arr[size], target ,count = 0;
+for(int i = 0; i < size; i++){
+    cin >> arr[i];
+}
+cin >> target;
+
+for(int i = 0; i<size; i++){
+    if(target == arr[i]){
+      count++;
+    }
+}
+cout << count;
+}
+//===============================
+#include <iostream>
+using namespace std;
+int main (){
+int size;
+cin >> size;
+
+int arr[size];
+for(int i = 0; i < size; i++){
+    cin >> arr[i];
+}
+for(int i = 0; i< size; i++){
+    cout << arr[i] << " ";
+}
+cout << endl;
+int arr2[size];
+for(int i = 0; i< size; i++){
+    arr2[i] = arr[i];
+    cout << arr2[i] << " ";
+}
+}
+//===============================
+#include <iostream>
+using namespace std;
+int main (){
+    
+int size;
+cin >> size;
+
+int arr[size];
+for(int i = 0; i < size; i++){
+    cin >> arr[i];
+}
+for(int i =0 ; i< size ; i++){
+    cout << arr[i] *-1 << " ";
+}
+}
+//===============================
+#include <iostream>
+using namespace std;
+int main (){
+    
+int size;
+cin >> size;
+
+int arr[size];
+for(int i = 0; i < size; i++){
+    cin >> arr[i];
+}
+
+for(int i = 0; i < size; i++){
+    cout << arr[i] *2 << " ";
+}
+}
+//===============================
+#include <iostream>
+using namespace std;
+int main (){
+    
+int size;
+cin >> size;
+
+int arr[size];
+for(int i = 0; i < size; i++){
+    cin >> arr[i];
+}
+bool found = false; 
+for(int i =0; i<size; i++){
+     bool unique = true;
+    for(int j= 0; j<size; j++){
+        if(i != j && arr[i] == arr[j]){
+          unique = false;
+          break;
+     }
+ }
+if(unique) {
+    cout << arr[i] << " ";
+      found = true;
+}
+}
+if(!found) cout << "NO";
+}
+//==========================
+#include <iostream>
+using namespace std;
+int main (){
+int size;
+cin >> size;
+
+int arr[size];
+for(int i = 0; i < size; i++){
+    cin >> arr[i];
+}
+for(int i=0 ;i<size-1; i++){
+    for(int j=i+1; j<size-1;j++){
+        if(arr[i] + arr[j] == arr[size -1]){
+            cout << arr[i] << " " << arr[j] << endl;
+        }
+    }
+}
+}
+//==============================
+#include <iostream>
+using namespace std;
+int main (){
+int num , sum = 0;
+cin >> num;
+
+int arr[num] , size = sizeof(arr) / sizeof(arr[0]);
+for(int i = 0; i < size; i++){
+    cin >> arr[i];
+}
+for(int i = 0; i < size; i++){
+    sum+= arr[i];
+}
+if(sum %2 != 0){
+    cout << "odd";
+}
+else{
+    cout << "even";
+}
+}
+//=======================================
+#include <iostream>
+using namespace std;
+int main (){
+
+int size;
+cin >> size;
+
+int arr[size];
+for(int i = 0; i < size; i++){
+    cin >> arr[i];
+}
+bool isfound = false;
+int lastunmatch = 0;
+for(int i=0 ;i<size; i++){
+bool match = false;
+    for(int j=0; j<size;j++){
+        if(arr[i] == -arr[j]){
+        match =true;
+        break;
+        }
+}
+if(!match) {
+    lastunmatch = arr[i];
+    isfound = true;
+}
+}
+if(isfound) {
+   cout << lastunmatch;
+}
+else{
+    cout << "NO";
+}
+}
+//==============================
+#include <iostream>
+using namespace std;
+int main (){
+int size;
+cin >> size;
+
+int arr[size];
+for(int i = 0; i < size; i++){
+    cin >> arr[i];
+}
+int position;
+cin >> position;
+
+if(position < 0 || position >= size) cout << "Invalid Position"; 
+else{
+for(int i = position; i<size-1; i++){
+    arr[i] = arr[i +1];
+}
+
+for(int i =0 ; i<size-1; i++){
+    cout << arr[i] << " ";
+}
+}
+}
+
+// //NESTED LOOP
+//==========================Q1
+// Take from user length of square then print square by *
+// Input: 5
+// Output:
+// * * * * *
+// * * * * *
+// * * * * *
+// * * * * *
+// * * * * *
+// #include <iostream>
+// using namespace std;
+// int main (){
+// int num;
+// cin >> num;
+// for(int i =1; i<= num; i++){
+//     for(int j =1; j<=num; j++){
+//         cout << "*";
+//     }
+//     cout << endl;
+// }
+// }
+//========================================
+// Ex1:
+// Take from user length & width of a rectangle then it by *
+// Input: 5 3
+// Output:
+// * * *
+// * * *
+// * * *
+// * * *
+// * * *
+// #include <iostream>
+// using namespace std;
+// int main (){
+// int length, width;
+// cin >> length >> width;
+
+// for(int i =1; i<= length; i++){
+//     for(int j = 1; j<= width; j++){
+//         cout << "* ";
+//     }
+//     cout << endl;
+// }
+// }
+//====================================
+// Take from user the length of a square from user then print empty square
+// Input: 5
+// Output:
+// * * * * *
+// *       *
+// *       *
+// *       *
+// * * * * *
+// #include <iostream>
+// using namespace std;
+// int main (){
+//     int length;
+//     cin >> length;
+//     for(int i =1; i<= length; i++){
+//         for(int j=1; j<=length; j++){
+//             if(i ==1 || i== length || j == 1 || j==length ){
+//                 cout << "*";
+//             }
+//             else{
+//                 cout << " ";
+//             }
+//         }
+//         cout << endl;
+//     }
+// }
+
+//====================================Q2
+// #include <iostream>
+// using namespace std;
+// int main (){
+//     int num;
+//     cin >> num;
+// for(int i =1; i <= num; i++){
+//     for(int j = 1; j<= i; j++){
+//         cout << "*";
+//     }
+//     cout<< endl;
+// }
+// }
+// Input: 4
+// Output:
+// *
+// * *
+// * * *
+// * * * *
+//===============================Q3
+
+// #include <iostream>
+// using namespace std;
+// int main (){
+//     int num;
+//     cin >> num;
+
+//     for(int i = 1; i <=num; i++){
+//         for(int j=1; j<=i; j++){
+//             if(j == 1 || j == i || i == num){
+//                 cout << "*";
+//             }
+//             else{
+//                 cout << " ";
+//             }
+//         }
+//         cout << endl;
+//     }
+// }
+// // Take an integer from user then print a hollow triangle
+// // Input: 5
+// // Output:
+// // *
+// // * *
+// // *   *
+// // *     *
+// // * * * * *
+//===============================
+// Print all prime numbers between two integers
+// 5 .. 20
+// 5, 7, 11, 13, 17, 19
+
+// #include <iostream>
+// using namespace std;
+// int main (){
+//     int num1, num2;
+//     cin >> num1 >> num2;
+//     int start = (num1 > num2) ? num2 : num1;
+//     int end = (num1 > num2) ? num1 : num2;
+//     for(int num =start; num <= end; num++){
+//      bool isPrime = true;
+
+//         for(int i = 2 ; i<= num/2; i++){
+//         if(num %i == 0){
+//         isPrime = false;
+//         break;
+//         }
+//       }
+//       if(isPrime && num!= 1){
+//       cout << num << ", ";
+//       }
+//     }
+// }
+//===============================
+// #include <iostream>
+// using namespace std;
+// int main (){
+// int num;
+// cin >> num;
+// for(int i =1; i<= num; i++){
+// int sum =0;
+// for(int j = 1; j<= i/2; j++){
+// if(i %j == 0){
+//    sum += j;
+// }
+// }
+// if(sum == i ){
+//   cout << i << ", ";
+// }
+// }
+// }
+// perfect num 1 500 6 28 496   sum = divisor of 500
+//=========================================
+
+// #include <iostream>        // F L A G   CONCEPT
+// using namespace std;       //prime number has 2 divisors only (same number
+// and 1) int main (){            // so if any number from ( 2 to number/2 ) is
+// divisible by the number
+//                        // the number becomes not prime
+// //int steps = 0;        // steps here to show how many iterations of the loop
+// int num;              // when we use this flag (isPrime) we reduce iterations
+// as posible we can bool isPrime = true; cin >> num;
+
+// for(int i = 2; i <=num/2; i++){ //i = possible divisor
+// //steps++;
+// if(num %i == 0){               // i = actual divisor
+// isPrime = false;
+//      break;
+// }
+// }
+// if(isPrime){
+// cout << "prime\n";
+// }
+// else{
+// cout << "not prime\n";
+// }
+// //cout << "steps= " << steps << endl;
+// }
+//====================================
+#include <iostream>  // (F L A G   AS  char)  with do while
+using namespace std;
+int main() {
+  char again;
+  do {
+    float num1, num2;
+    cout << "enter two numbers: ";
+    cin >> num1 >> num2;
+
+    cout << "\nsum = " << num1 + num2 << endl;
+
+    cout << "do you want try again? (y/n)";
+    cin >> again;
+  } while (again == 'y' || again == 'Y');
+}
+
+//=============================
+//SHIFTING ARRAY 
+// #include <iostream>
+// using namespace std;
+// int main (){
+//     int arr[5] = {1,2,3,4,5}, size = sizeof(arr) / sizeof(arr[0]), value , index;
+//     cout << "Enter a value: ";
+//     cin >> value;
+
+//     cout<< "enter index: ";
+//     cin >> index;
+
+//     for(int i=size -1; i>index; i--){
+//         arr[i] = arr[i] -1;
+//     }
+//     arr[index] = value;
+    
+//     for(int i =0; i<size; i++){
+//         cout << arr[i] << ",";
+//     }
+//     cout << char(8);
+// }
+//==========================================
+//REVERSE ARRAY IN PLACE with swap // and possible to use (tmp array) instead of swap fun
+// #include <iostream>
+// using namespace std;
+// int main (){
+//     const int size = 5;
+//     int arr[size] = {10,20,30,40,50};
+//     // for(int i =0; i<size/2; i++){
+//     //  swap(arr[i] , arr[size - 1 -i]);
+//     // }
+//     int tmp[size];
+//     for(int i =0 ;i<size; i++){
+//      tmp[i] = arr[size -1 -i];
+//     }
+//     for(int i =0; i<size ; i++){
+//         arr[i] = tmp [i];
+//     }
+//     for(int i =0; i<size; i++){
+//         cout << arr[i] << ",";
+//     }
+//     cout << char(8);
+// }
+

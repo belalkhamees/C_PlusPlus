@@ -1,0 +1,231 @@
+// Assignment 2 - if condition - swithch
+
+#include <iostream>
+using namespace std;
+int main() {
+  int number;
+  cout << "Enter a single integer number: ";
+  cin >> number;
+  if (number < 0) {
+    cout << "negative";
+  } else if (number == 0) {
+    cout << "zero";
+  } else {
+    cout << "positive";
+  }
+}
+//=============================================
+#include <iostream>
+using namespace std;
+
+int main() {
+  int number;
+  cout << "Enter a digit: ";
+  cin >> number;
+
+  if (number == 1) {
+    cout << "one";
+  } else if (number == 2) {
+    cout << "two";
+  } else if (number == 3) {
+    cout << "three";
+  } else if (number == 4) {
+    cout << "four";
+  } else if (number == 5) {
+    cout << "five";
+  }
+}
+//=========================================
+#include <iostream>
+using namespace std;
+
+int main() {
+  int num1, num2, num3, num4, num5, sum = 0;
+  cout << "Enter five numbers: ";
+  cin >> num1 >> num2 >> num3 >> num4 >> num5;
+  if (num1 % 2 != 0) {
+    sum += num1;
+  }
+  if (num2 % 2 != 0) {
+    sum += num2;
+  }
+  if (num3 % 2 != 0) {
+    sum += num3;
+  }
+  if (num4 % 2 != 0) {
+    sum += num4;
+  }
+  if (num5 % 2 != 0) {
+    sum += num5;
+  }
+  cout << "Sum of all odd values: " << sum;
+}
+//=======================================
+
+#include <iostream>
+using namespace std;
+int main() {
+  int year;
+  cout << "Enter a year: ";
+  cin >> year;
+
+  if (year % 400 == 0) {
+    cout << year << " is a leap year";
+  } else if (year % 4 == 0 && year % 100 != 0) {
+    cout << year << " is a leap year";
+  } else if (year % 400 != 0) {
+    cout << year << " is not a leap year";
+  } else if (year % 4 != 0) {
+    cout << year << " is not a leap year";
+  }
+}
+//=====================================
+
+#include <iostream>
+using namespace std;
+int main() {
+  int birth_year;
+  cout << "Enter your Birth year: ";
+  cin >> birth_year;
+
+  int current_year = 2025;
+  int age = current_year - birth_year;
+
+  if (age < 18) {
+    cout << "You are younger than 18 years";
+  } else {
+    cout << "You are 18 years or older";
+  }
+}
+//========================================
+#include <iostream>
+using namespace std;
+int main() {
+  int marks;
+  cout << "Enter your marks: ";
+  cin >> marks;
+
+  if (marks < 25) {
+    cout << "Your grade is: F";
+  } else if (marks < 45) {
+    cout << "Your grade is: E";
+  } else if (marks < 50) {
+    cout << "Your grade is: D";
+  } else if (marks < 60) {
+    cout << "Your grade is: C";
+  } else if (marks < 80) {
+    cout << "Your grade is: B";
+  } else {
+    cout << "Your grade is: A";
+  }
+}
+//===========================================
+#include <iostream>
+using namespace std;
+int main() {
+  int month;
+  cout << "insert number between 1 to 12: ";
+  cin >> month;
+
+  switch (month) {
+    case 1:
+      cout << "January";
+      break;
+    case 2:
+      cout << "February";
+      break;
+    case 3:
+      cout << "March";
+      break;
+    case 4:
+      cout << "April";
+      break;
+    case 5:
+      cout << "May";
+      break;
+    case 6:
+      cout << "June";
+      break;
+    case 7:
+      cout << "July";
+      break;
+    case 8:
+      cout << "August";
+      break;
+    case 9:
+      cout << "September";
+      break;
+    case 10:
+      cout << "October";
+      break;
+    case 11:
+      cout << "November";
+      break;
+    case 12:
+      cout << "December";
+      break;
+    default:
+      cout << "invalid number";
+  }
+}
+//=========================================
+#include <iostream>
+using namespace std;
+int main() {
+  int num;
+  cout << "Enter a number: ";
+  cin >> num;
+
+  string msg = (num % 2 == 0) ? "even" : "odd";
+  cout << msg;
+}
+//========================================
+#include <iostream>
+using namespace std;
+int main() {
+  char ch;
+  cout << "Enter a character: ";
+  cin >> ch;
+
+  if (ch == 'A' || ch == 'a') {
+    cout << "vowel";
+  } else if (ch == 'E' || ch == 'e') {
+    cout << "vowel";
+  } else if (ch == 'I' || ch == 'i') {
+    cout << "vowel";
+  } else if (ch == 'O' || ch == 'o') {
+    cout << "vowel";
+  } else if (ch == 'U' || ch == 'u') {
+    cout << "vowel";
+  } else {
+    cout << "consonant";
+  }
+}
+//====================================
+#include <iostream>
+using namespace std;
+int main() {
+  int num1, num2, num3;
+  cout << "Enter three numbers: ";
+  cin >> num1 >> num2 >> num3;
+  int max;
+  int min;
+
+  if (num1 >= num2 && num1 >= num3) {
+    max = num1;
+  } else if (num2 >= num1 && num2 >= num3) {
+    max = num2;
+  } else if (num3 >= num1 && num3 >= num2) {
+    max = num3;
+  }
+
+  if (num1 <= num2 && num1 <= num3) {
+    min = num1;
+  } else if (num2 <= num1 && num2 <= num3) {
+    min = num2;
+  } else if (num3 <= num1 && num3 <= num2) {
+    min = num3;
+  }
+  cout << "Max element = " << max << endl << "Min element = " << min;
+}
+//=======================================

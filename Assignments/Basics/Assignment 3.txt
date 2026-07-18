@@ -1,0 +1,264 @@
+// Assignment 3 - while loops - counting - gcd
+#include <iostream>
+using namespace std;
+
+int main (){
+for(int i = 10; i>=1; i--){
+    cout << i << " ";
+}
+}
+//=========================
+#include <iostream>
+using namespace std;
+int main(){
+int num;
+float average;
+
+for(int i = 1; i<= 10; i++){
+cin >> num;
+average += num;
+}
+cout << average /10;
+}
+//========================
+#include <iostream>
+using namespace std;
+int main(){
+
+int num;
+cin >> num;
+for(int i = 1; i<=12; i++){
+    cout << i << " * " << num << " = " << i*num << endl;
+}
+}
+//==========================
+#include <iostream>
+using namespace std;
+int main(){
+
+int num1, num2,temp, sum = 0;
+cin >> num1 >> num2;
+if(num1 > num2){
+   temp = num1;
+   num1 = num2;
+   num2 = temp;}
+for(int i =num1; i <= num2; i++){
+    sum += i;
+}
+cout << sum;
+}
+//==============================
+#include <iostream>
+using namespace std;
+int main(){
+
+int num, sum = 0;
+while(cin >> num){
+    if(num < 0){
+        break;
+    }
+    sum +=num;
+}
+cout << sum;
+}
+//=============================
+#include <iostream>
+using namespace std;
+int main(){
+
+int num, max = 0;
+while(cin >> num){
+    if(num < 0){
+        break;
+    }
+if(num > max){
+    max = num;
+}
+}
+cout << max;
+}
+//==============================
+ #include <iostream>
+using namespace std;
+int main(){
+int num;
+cin >> num;
+int steps = 0;
+
+while(num > 0){
+if(num %2 == 0){
+    num/=2;
+    steps++;
+}
+else{
+    num-=1;
+    steps++;
+}
+}
+cout << steps;
+}
+//==============================
+#include <iostream>
+using namespace std;
+int main(){
+
+int base , exponent;
+cin >> base >> exponent;
+float result = base;
+
+if(exponent > 0){
+    for(int i = 1; i < exponent; i++){
+    result *= base;
+}
+}
+else if(exponent < 0){
+    for(int i = 1; i < exponent*-1; i++){
+    result *= base;
+}
+    result = 1 / result; 
+}
+else{
+    result = 1;
+}
+cout << result;
+}
+//=================================
+#include <iostream>
+using namespace std;
+int main (){
+    int num;
+    int odd_values = 0;
+
+    for(int i = 1; i<= 10; i++){
+        cin >> num;
+        if(num %2 != 0){
+         odd_values++;
+        }
+    }
+cout << odd_values;
+}
+//==============================
+#include <iostream>
+using namespace std;
+int main (){
+    int a, b;
+    int greater, smaller;
+    cin >> a >> b;
+    if(a > b){
+     greater = a;
+     smaller = b;
+    }
+    else{
+     greater = b;
+     smaller = a;
+    }
+int division = greater / smaller;
+int remainder = greater % smaller;
+int divisor = smaller;
+while(remainder != 0){
+    divisor = remainder;
+    greater = smaller;
+    smaller = remainder;
+    division = greater / smaller;
+    remainder = greater % smaller;
+}
+cout << divisor;
+}
+//==============================
+#include <iostream>
+using namespace std;
+int main (){
+int num, largest, second;
+cin >> num;
+largest = num;
+second = num;
+for(int i = 2; i<= 10; i++){
+    cin >> num;
+if(num >= largest){
+    second = largest; 
+    largest = num;
+}
+else if(num > second && num < largest){
+    second = num;
+}
+}
+cout << second;
+}
+//=================================
+#include <iostream>
+using namespace std;
+int main() {
+    int num, binary = 0, x = 1;
+    cin >> num;
+
+    while (num > 0) {
+        binary += (num % 2) * x;
+        num /= 2;
+        x *= 10;
+    }
+    cout << binary;
+}
+//==========================
+#include <iostream>
+using namespace std;
+int main (){
+
+    int num , reversed = 0, remainder;
+    cin >> num;
+    int temp = num;
+    while(temp != 0){
+        remainder = temp %10;
+        reversed = reversed * 10 + remainder;
+        temp /= 10;
+    }
+    if(num == reversed){
+        cout << num << endl << "YES";
+    }
+    else{
+        cout << reversed << endl << "NO";
+    }
+}
+//=============================
+#include <iostream>
+using namespace std;
+int main (){
+int number, values;
+cin >> number;
+int even = 0, odd = 0, positive = 0, negative = 0;
+for(int i = 1; i <= number; i++){
+    cin >> values;
+if(values %2 == 0){
+    even++;
+}
+else{
+    odd++;
+}
+if(values > 0){
+    positive++;
+}
+else if(values < 0){
+    negative++;
+}
+}
+cout <<"Even: " << even << "\n"
+     <<"Odd: " << odd << "\n"
+     <<"Positive: " << positive << "\n"
+     <<"Negative: " << negative << "\n";
+}
+//===============================
+#include <iostream>
+using namespace std;
+int main (){
+int num1, num2;
+cin >> num1 >> num2;
+if(num1 > num2){
+int temp = num1;
+    num1 = num2;
+    num2 = temp;
+}
+int count_nums = (num2 - num1) +1;
+float average = float(num1 + num2) /2;
+int sum = count_nums * average;
+
+cout << sum;
+}

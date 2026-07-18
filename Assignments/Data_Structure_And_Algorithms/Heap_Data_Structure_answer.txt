@@ -1,0 +1,218 @@
+#include <iostream>
+#include<exception>
+#include <vector>
+using namespace std;
+
+class MaxHeap {
+
+private:
+	vector<int> heap;
+
+	void heapifyUp(int indx) {
+		if (indx == 0) return;
+		int parent = (indx - 1) / 2;
+		if (heap[indx] > heap[parent]) {
+			swap(heap[indx], heap[parent]);
+			heapifyUp(parent);
+		}
+	}
+
+	void heapifyDown(int indx) {
+		int left = indx * 2 + 1;
+		int right = indx * 2 + 2;
+		int max = indx;
+		if (left < heap.size() && heap[left] > heap[max])
+			max = left;
+		if (right < heap.size() && heap[right] > heap[max])
+			max = right;
+		if (indx != max) {
+			swap(heap[max], heap[indx]);
+			heapifyDown(max);
+		}
+	}
+public:
+	void insert(int value) {
+		heap.push_back(value);
+		heapifyUp(heap.size() - 1);
+	}
+	int getTop() {
+		if (heap.empty()) {
+			throw exception("Empty!!");
+		}
+		return heap[0];
+	}
+	void removeTop() {
+		if (heap.empty())return;
+		heap[0] = heap.back();
+		heap.pop_back();
+		heapifyDown(0);
+	}
+	void remove(int indx) {
+		if (heap.empty())return;
+		if (indx < 0 || indx > heap.size() - 1) {
+			cout << "Invalid Index" << endl;
+			return;
+		}
+		heap[indx] = heap.back();
+		heap.pop_back();
+		heapifyDown(indx);
+	}
+
+	void print() {
+		for (int i = 0; i < heap.size(); i++) {
+			cout << heap[i] << " -> ";
+		}
+	}
+};
+class MinHeap {
+
+private:
+	vector<int> heap;
+
+	void heapifyUp(int indx) {
+		if (indx == 0) return;
+		int parent = (indx - 1) / 2;
+		if (heap[indx] < heap[parent]) {
+			swap(heap[indx], heap[parent]);
+			heapifyUp(parent);
+		}
+	}
+
+	void heapifyDown(int indx) {
+		int left = indx * 2 + 1;
+		int right = indx * 2 + 2;
+		int min = indx;
+		if (left < heap.size() && heap[left] < heap[min])
+			min = left;
+		if (right < heap.size() && heap[right] < heap[min])
+			min = right;
+		if (indx != min) {
+			swap(heap[min], heap[indx]);
+			heapifyDown(min);
+		}
+	}
+public:
+	void insert(int value) {
+		heap.push_back(value);
+		heapifyUp(heap.size() - 1);
+	}
+	int getTop() {
+		if (heap.empty()) {
+			throw exception("Empty!!");
+		}
+		return heap[0];
+	}
+	void removeTop() {
+		if (heap.empty())return;
+		heap[0] = heap.back();
+		heap.pop_back();
+		heapifyDown(0);
+	}
+	void remove(int indx) {
+		if (heap.empty())return;
+		if (indx < 0 || indx > heap.size() - 1) {
+			cout << "Invalid Index" << endl;
+			return;
+		}
+		heap[indx] = heap.back();
+		heap.pop_back();
+		heapifyDown(indx);
+	}
+
+	void print() {
+		for (int i = 0; i < heap.size(); i++) {
+			cout << heap[i] << " -> ";
+		}
+	}
+};
+
+int main() {
+
+#pragma region MaxHeap
+	MaxHeap max;
+	max.insert(15);
+	max.insert(5);
+	max.insert(10);
+	max.insert(20);
+	max.insert(30);
+	max.insert(25);
+	max.insert(35);
+
+
+	try {
+		cout << "top: " << max.getTop() << endl;
+	}
+	catch (exception& e) {
+		cout << e.what();
+	}
+	max.print();
+	max.removeTop();
+	cout << "\n=====After remove top=====\n";
+
+	try {
+		cout << "top: " << max.getTop() << endl;
+	}
+	catch (exception& e) {
+		cout << e.what();
+	}
+	max.print();
+
+	max.remove(2);
+
+	cout << "\n=====After remove index 2 =====\n";
+
+	try {
+		cout << "top: " << max.getTop() << endl;
+	}
+	catch (exception& e) {
+		cout << e.what();
+	}
+	max.print();
+#pragma endregion
+
+
+#pragma region MinHeap
+	/*MinHeap min;
+	min.insert(15);
+	min.insert(5);
+	min.insert(10);
+	min.insert(20);
+	min.insert(30);
+	min.insert(25);
+	min.insert(35);
+
+
+	try {
+		cout << "top: " << min.getTop() << endl;
+	}
+	catch (exception& e) {
+		cout << e.what();
+	}
+	min.print();
+	min.removeTop();
+	cout << "\n=====After remove top=====\n";
+
+	try {
+		cout << "top: " << min.getTop() << endl;
+	}
+	catch (exception& e) {
+		cout << e.what();
+	}
+	min.print();
+
+	min.remove(2);
+
+	cout << "\n=====After remove index 2 =====\n";
+
+	try {
+		cout << "top: " << min.getTop() << endl;
+	}
+	catch (exception& e) {
+		cout << e.what();
+	}
+	min.print();*/
+#pragma endregion
+
+
+}
+

@@ -1,0 +1,191 @@
+1. What are the four concepts of OOP with a short explanation for each? 
+
+
+Q1:
+
+1- encapsulation -> bundling related fields and methods inside the same class.
+
+2- abstraction -> that class we cant create object from it , it use as base class for child classes to make common interface to them , class become abstracted when it have at least one pure virtual function .
+
+3- inheritance -> when we have the same attributes and functions between classes we use inheritance to achieve the code reusability, we can do any modify in base class and it will be affect in child classes, each derived class have it own local attributes and methods.
+
+4- polymorphism -> an oop concept it refers to the ability of variable or method or object to take a multiple form, it have to types , compile time like function overloading and runtime like function overriding.
+
+--------------------------------------------------------------
+2. What is the difference between access modifiers?     
+                           
+Q2:
+
+-public -> means data members can be called or accessed directly inside the class and outside the class and in main method.
+
+-private -> means data members can't be accessed outside the class, only be public method inside same class.
+
+-in inheritance when we use public to base class all public members in child will be public and protected still protected and private still private,
+when protected all public and protected be protected,
+when private all become private.
+
+---------------------------------------------------------------
+3. Mention an example for Exception handling.                                     
+
+Q3:
+/*
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+int x,y;
+
+cin >> x >> y;
+
+try{
+    if(y == 0){
+        throw "can't divide by zero\n";
+    }
+    else if (y < 0){
+        throw "can't divide by negative\n";
+    }
+
+    cout << x / y << endl;
+}
+ catch(const char* msg) {
+    cout << msg;
+ }
+    
+cout << "program continued\n";
+
+}
+*/
+-----------------------------------------------------------------
+4. Mention an example for Template.                                                             
+
+Q4:
+/*
+#include <iostream>
+
+using namespace std;
+
+template< typename re, typename t1,typename t2>        // (re) refers to return type 
+re sum (t1 num1, t2 num2){
+    return num1 + num2;
+}
+
+
+int main() {
+    
+cout << sum <double>(10,15.5);   
+
+}
+*/
+
+---------------------------------------------------
+5. What is the difference between overloading and overriding?          
+
+Q5:
+
+-Function overloading -> means same name different signature (signature is: number & type & order of arguments).
+
+-Function overriding -> means same name same signature it happens in inheritance when we want to use same function to do different behavior in each derived class.
+
+---------------------------------------------------
+
+
+Q6:
+#include <iostream>
+using namespace std;
+
+class Point2D{
+protected:
+float x,y;
+float* ptr;
+
+public:
+Point2D():x(0),y(0), ptr(nullptr) {}
+Point2D(float x, float y):x(x),y(y), ptr(nullptr){}
+
+void setX(float x){
+    this-> x = x;
+}
+float getX()const{
+    return x;
+}
+void setY(float y){
+    this-> y = y;
+}
+float getY()const{
+    return y;
+}
+void setXY(float x,float y){
+    this-> x = x;
+    this-> y = y;
+}
+
+
+float* getXY(){
+    delete[] ptr;
+    ptr = new float[2]{x,y};
+    return ptr;
+}
+
+~Point2D(){
+    delete[]ptr;
+}
+
+};
+
+class Point3D : public Point2D{
+float z;
+ 
+public:
+Point3D(float x, float y , float z):Point2D(x,y), z(z)  {}
+Point3D():z(0){}
+
+float getZ()const{
+    return z;
+}
+void setZ(float z){
+    this-> z = z;
+}
+
+void setXYZ(float x,float y, float z){
+    this-> x = x;
+    this-> y = y;
+    this-> z = z;
+
+}
+
+float* getXYZ(){
+    delete[] ptr;
+    ptr = new float[3]{x,y,z};
+    return ptr;
+}
+
+
+};
+
+
+int main() {
+    
+Point3D p3(1.1, 2.2, 3.3);
+    cout << "Point3D:\n"
+         << p3.getX() << "\n"
+         << p3.getY() << "\n"
+         << p3.getZ() << "\n" << endl;
+
+float* arrXYZ = p3.getXYZ();
+    cout << "arrXYZ:\n" 
+         << arrXYZ[0] << "\n"
+         << arrXYZ[1] << "\n"
+         << arrXYZ[2] << "\n";
+}
+
+
+
+
+
+
+
+
+
+ 
+

@@ -1,0 +1,212 @@
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <forward_list>
+#include <queue>
+#include <stack>
+
+using namespace std;
+
+bool is_balanced(const string& s) {
+	stack <char> openings;
+
+	for (char ch : s) {
+		if (ch == '(' || ch == '{' || ch == '[') openings.push(ch);
+
+	    else {
+			if (openings.empty()) return false;
+
+			char top = openings.top();
+			if (ch == ')' && top != '(' ||
+				ch == '}' && top != '{' ||
+				ch == ']' && top != '[') return false;
+				
+			openings.pop();
+		}
+	}
+	return openings.empty();
+}
+
+template<typename ty>
+ty maxInQueue(queue<ty> q) {
+	ty max = q.front();
+	q.pop();
+
+	
+	while(!q.empty()){
+		if (q.front() > max) max = q.front();
+		q.pop();
+	}
+
+	return max;
+}
+
+template<typename ty>
+queue<ty> merge(queue<ty> q1, queue<ty> q2) {
+	queue<ty> result;
+	while (!q1.empty() && !q2.empty()) {
+		result.push(q1.front());
+		q1.pop();
+
+		result.push(q2.front());
+		q2.pop();
+	}
+	while (!q1.empty()) {
+		result.push(q1.front());
+		q1.pop();
+	}
+	while (!q2.empty()) {
+		result.push(q2.front());
+		q2.pop();
+	}
+
+	return result;
+}
+
+template<typename ty>
+void printQueue(queue<ty> q) {
+	while (!q.empty()) {
+		cout << q.front() << " ";
+		q.pop();
+	}
+}
+
+template<typename ty>
+void reverse_k_elements(queue<ty>& q, int k) {
+	queue<ty> tmp_q;
+	stack <ty> tmp_stack;
+
+	for (int i = 0; i < k; i++) {
+		tmp_stack.push(q.front());
+		q.pop();
+	}
+	while (!q.empty()) {
+		tmp_q.push(q.front());
+		q.pop();
+	}
+
+	while (!tmp_stack.empty()) {
+		q.push(tmp_stack.top());
+		tmp_stack.pop();
+	}
+	while (!tmp_q.empty()) {
+		q.push(tmp_q.front());
+		tmp_q.pop();
+	}
+	
+
+}
+
+
+int sum_string_stack(stack<string> stack) {
+	int sum = 0;
+	while (!stack.empty()) {
+		sum += stoi(stack.top());
+		stack.pop();
+	}
+	return sum;
+}
+
+int calPoints(vector<string>& operations) {
+	stack<string> stack;
+
+	for (const string& s : operations) {
+		if (s == "C") {
+			stack.pop();
+		}
+		else if (s == "D") {
+			stack.push(to_string(stoi(stack.top())*2));
+		}
+		else if (s == "+") {
+			string top = stack.top();      stack.pop();
+			string second = stack.top();   stack.push(top);
+
+			stack.push(to_string(stoi(top) + stoi(second) ));
+		}
+		else {
+			stack.push(s);
+		}
+	}
+	return sum_string_stack(stack);
+}
+
+
+int remaining_sandwiches(vector<int>& students,vector<int>& sandwiches){
+	queue<int> student_q;
+	for (int num : students){
+		student_q.push(num);
+	}
+
+	stack<int> sandwich_stack;
+	for (int i = sandwiches.size() - 1; i >= 0; i--) {
+		sandwich_stack.push(sandwiches[i]);
+	}
+
+	int attempts = 0;
+	while (!student_q.empty() && attempts < student_q.size()){
+
+		if (student_q.front() == sandwich_stack.top()) {
+			student_q.pop();
+			sandwich_stack.pop();
+
+			attempts = 0;
+		}
+		else {
+			attempts++;
+			int front = student_q.front();  student_q.pop();
+			student_q.push(front);
+		}
+		if (attempts == student_q.size()) break;
+
+	}
+	return student_q.size();
+
+
+}
+
+
+int required_time(vector<int>& customers, int index) {
+	queue< pair<int,int> > customer_q;
+
+	for (int i = 0; i < customers.size(); i++) {
+		customer_q.push({ i, customers[i] });
+	}
+
+	int seconds = 0;
+	while (true) {
+		pair<int, int> front = customer_q.front();
+
+
+		front.second--;
+		seconds++;
+
+		if (front.first == index && front.second == 0) break;
+
+		if (front.second == 0) customer_q.pop();
+		else {
+			customer_q.pop();
+			customer_q.push(front);
+		}
+
+	}
+	return seconds;
+	
+}
+
+int main() {
+	int size;
+	cin >> size;
+
+	vector<int> customers(size);
+
+	for (int i = 0; i < size; i++) {
+		cin >> customers[i];
+	}
+	int index;
+	cin >> index;
+
+	cout << required_time(customers,index);
+
+}

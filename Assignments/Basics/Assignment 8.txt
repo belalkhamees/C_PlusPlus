@@ -1,0 +1,328 @@
+#include <iostream>
+using namespace std;
+
+
+int main(){
+
+string str;
+cin >> str;
+
+int max = 0;
+char most = str[0];
+
+for(int i=0; i<str.length(); i++){
+   int count =0;
+   
+    for(int j=0; j<str.length(); j++){
+       if( tolower(str[i]) == tolower(str[j]) ){
+        count++;
+       }
+    }
+    if(count > max){
+        max = count;
+        most = tolower(str[i]);
+    }
+}
+cout << most;
+}
+//------------solution 2 using 3 functions:
+#include <iostream>
+using namespace std;
+
+char to_lower(char ch){
+    if(ch >= 'A' && ch <= 'Z') return (ch + ' ');
+    return ch;
+}
+
+int char_count(string s, char ch){
+    int count =0;
+    for(int i=0;i<s.size();i++){
+    if( to_lower(s[i]) == to_lower(ch) ) count++;   
+    }
+    return count;
+}
+char most_repeated_char(const string& s){
+    char most ={};
+    int max =0;
+    for(int i=0;i<s.size(); i++){
+     if(!isalpha(s[i])) continue;   // to not count letter like space as a char
+     
+        int cnt = char_count(s,s[i]);
+        if(cnt > max){ 
+        max = cnt;
+        most = s[i];
+        if(cnt >= s.size()/2) break;
+
+        }
+    }
+    return to_lower(most);
+}
+
+int main() {
+string s;
+getline(cin,s);
+
+cout << most_repeated_char(s);
+}
+//-------------solution 3 by frequency array 
+#include <iostream>
+using namespace std;
+
+int* get_freq_arr(const string& s){
+    int* freq = new int[26]{};     // 26 means number of char in english 
+    for(int i=0;i<s.size(); i++){
+        if(!isalpha(s[i]))continue;
+        char ch = toupper(s[i]);
+        freq[ch - 'A']++;      // A - 'A' == 0  so increment arr[0] by 1
+    }
+    return freq;
+}
+
+char most_repeated_char(string s){
+    int* freq = get_freq_arr(s);
+    char most ={};
+    int max =0;
+    for(int i=0;i<s.size(); i++){
+
+       if(!isalpha(s[i]))continue;
+        char ch = toupper(s[i]);
+        
+        if(freq[ch - 'A'] > max) {
+        max = freq[ch - 'A'] ;
+        most = s[i];  }
+        }
+        delete[] freq;
+        return tolower(most);
+    }
+
+int main() {
+string s;
+getline(cin,s);
+cout << most_repeated_char(s);
+}
+
+//most repeated char in string
+//===========================================
+
+#include <iostream>
+using namespace std;
+
+string lower(string s){  // pass by value not &
+
+for(int i=0; i<s.length(); i++){
+    s[i]+= tolower(s[i]);
+}
+return s;
+}
+
+int main(){
+
+string str;
+cin >> str;
+
+cout << lower(str);
+}
+
+//=========================
+#include <iostream>
+using namespace std;
+
+// const by & because i only check somthing i will not make change in original
+bool is_digit(const string& s){  
+if(s.empty ()) return false;
+    for(int i=0; i<s.length();i++){
+        if(!isdigit(s[i])) return false;
+    }
+    return true;
+}
+
+int main(){
+
+string str;
+cin >> str;
+
+cout << boolalpha << is_digit(str);
+}
+// is all chars in string digits ? 
+//=============================
+
+#include <iostream>
+using namespace std;
+
+void reverse_str(string& str){
+    for(int i=0;i<str.size()/2;i++){
+     // swap(str[i] , str[str.size() -1 -i]); كل عنصر مع مقابله  
+        char tmp = str[i];     //manually
+        str[i] = str[str.size() -1 -i];
+        str[str.size() -1 -i] = tmp;
+    }
+}
+int main(){
+
+string str;
+cin >> str;
+
+cout << reversed(str);
+}
+
+//============================
+#include <iostream>
+using namespace std;
+
+
+int main(){
+
+string str;
+getline(cin,str);
+
+int count = 0;
+bool in_word = false;
+
+for(int i=0; i<str.length(); i++){
+if ( isalpha(str[i]) ){
+    if(!in_word){
+        count ++;
+        in_word = true;
+    }
+}
+else{
+    in_word = false;
+}
+}
+cout << count;     //my!name is belal ---> 4 ((! or space) separete word)
+}
+//how much words in string
+//===========================
+#include <iostream>
+using namespace std;
+
+int even_count(int arr[],int size){
+    int cnt =0;
+    for(int i=0;i<size;i++){
+        if(arr[i] % 2 == 0){
+            cnt++;
+        }
+    }
+    return cnt;
+}
+
+int* get_even(int num[] , int size){
+    int siz = even_count(num,size);
+    int* arr = new int[siz];
+    int index = 0;           //to add numbers by order in new arr
+     for(int i=0;i<size;i++){
+        if(num[i] % 2 == 0){
+         arr[index++] = num[i];     
+        }
+    }
+    return arr;
+}
+
+int main(){
+int nums[5] = {2,3,8,7,6};  
+
+int* arr = get_even(nums,5);
+int size = even_count(nums,5);
+
+for(int i=0;i<size;i++){
+   cout << arr[i] << " ";
+}
+delete[]arr;
+}
+
+//function to return array of evens
+//===============================
+#include <iostream>
+using namespace std;
+
+void swap(int* a,int*b){
+    int tmp= *a;
+    *a = *b;
+    *b = tmp;
+}
+
+int main() {
+
+int x ,y;
+cin >> x >> y;
+
+cout << "Before : " << x << " " << y << endl;
+swap(&x,&y);
+
+cout << "After : " << x << " " << y;
+}
+//swaping by pointers
+//================================
+#include <iostream>
+using namespace std;
+
+
+int main() {
+    
+int size;
+cin >> size;
+
+int* p = new int[size];
+for(int i=0;i<size;i++){
+    cin >> p[i];
+}
+
+for(int i=0;i<size;i++){
+    cout << p[i] << " ";
+}
+delete[]p;
+}
+//array in heap
+//===============================
+#include <iostream>
+using namespace std;
+
+
+    
+int main() {
+
+string s;
+
+getline(cin, s);
+
+for(int i=0; i<s.length();i++){
+    if(isalpha(s[i]) ){
+        if(s[i] == 'z') s[i] = 'a';
+        else if(s[i] == 'Z') s[i] = 'A';
+        else {
+        s[i] += 1;
+        }
+}
+        cout << s[i];
+
+}
+}
+//equal current letter to next alphabet 
+//===============================
+#include <iostream>
+using namespace std;
+
+string result(string s){
+string res = "";
+for(int i=0; i<s.length();i++){
+if(s[i] == '#'){
+    return res;  }
+else{
+    res +=s[i];
+}
+}
+return res;
+}
+    
+int main() {
+
+string s;
+
+cin >> s;
+
+string ss = result(s);
+
+cout << ss;
+}
+// if # in string stop .. then print string
+

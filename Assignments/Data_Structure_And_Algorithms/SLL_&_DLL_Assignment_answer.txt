@@ -1,0 +1,94 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <forward_list>
+#include <list>
+
+using namespace std;
+
+template<typename ty>
+void dll_inputing(list<ty>& mylist, int size) {
+	ty element;
+	for (int i = 1; i <= size; i++) {
+		cin >> element;
+		mylist.push_back(element); //push_front(element);->  for sll (forward list) because there is no push_back () in sll
+	}
+	//mylist.reverse();
+}
+
+void insert_at_pos(int pos, string element, forward_list<string>& mylist) {
+	if (pos == 1) {
+		mylist.push_front(element);
+		return;
+	}
+
+	auto itr = mylist.begin();
+	for (int i = 1; i <= pos - 2; i++) itr++;
+	mylist.insert_after(itr, element);
+}
+
+template<typename ty>
+void delete_at_pos(int pos, forward_list<ty>& mylist) {
+	mylist.reverse();
+
+	if (pos == 1) {
+		mylist.pop_front();
+	}
+	else {
+		auto itr = mylist.begin();
+		for (int i = 1; i <= pos - 2; i++) itr++;
+		mylist.erase_after(itr);
+	}
+
+
+	mylist.reverse();
+}
+
+template<typename ty>
+const ty& return_pos_value(int pos, forward_list<ty>& mylist) {
+
+	auto itr = mylist.begin();
+	for (int i = 1; i <= pos -1 ; i++) itr++;
+	
+	return *itr;
+}
+
+template<typename ty>
+void insert_at_middle(ty& element ,list<ty>& mylist) {
+	int middlePos = mylist.size() / 2;
+
+	auto itr = mylist.begin();
+	for (int i = 1; i <= middlePos; i++) itr++;
+	mylist.insert(itr, element);
+}
+
+int main() {
+	
+	int size;  cin >> size;
+
+	list<string> mylist;
+
+	dll_inputing(mylist,size);
+
+
+	string element; 
+	cin >> element;
+
+
+	insert_at_middle(element,mylist);
+
+	for (auto& element : mylist) {
+		cout << element << " ";
+	}
+
+	cout << endl;
+
+	//reverse traversal
+	for (auto itr = mylist.rbegin(); itr != mylist.rend();itr++) {
+		cout << *itr << " ";
+	}
+
+}
+
+

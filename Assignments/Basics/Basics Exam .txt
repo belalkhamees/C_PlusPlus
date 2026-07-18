@@ -1,0 +1,176 @@
+What are the main differences between an IF Statement and a Switch Case,
+with an example for each? (Mention at least 3 differences).
+
+//Q1
+-switch case mainly work with (numbers) only (i can switch by characters - by its ascii value )
+
+-if statement used for (if, my condition true do something)(else if, not true do something)( else , in any other case do something )(and i can do nothing if my first condition not true not must to use else if or else) 
+
+-(switch case) if i have many possible numbers i need to check if any of it equals my case then do something (every break likes the (else) in if statement - compiler check directly the case not check every case like if)
+
+-(switch case) is faster because it execute in compile time but if statement in runtime. 
+
+//=====
+/*
+int main() {
+int day;
+cin >> day;
+
+switch(day){
+    case 1: cout << "sunday"; break;
+    case 2: cout << "monday"; break;
+}
+}
+//====================
+int main() {
+
+int num;
+cin >> num;
+
+if (num == 0)cout << "zero";
+else if(num % 2 == 0)cout << "even number";
+else{
+    cout << "odd number";}
+}
+*/
+//=====================================
+//Q2
+What is the main difference between Do-While and For Loops, with an
+example for each?
+
+-for loop is loop ranged by limits from specific number to another and have a specific condition to stop used for traversing 
+
+-do while is condition based loop and (do while specially do something for one times at least)
+/*
+int main() {
+for(int i=1;i<5;i++){
+    if(i% 2 == 0)cout << i << " is even number" << endl;
+    else{
+        cout << i <<" not even" << endl;
+    }
+}
+}
+//===========
+int main() {
+int num1,num2;
+
+char ch = 'y';
+
+
+do{
+    cout << "enter two number summation"<< endl;
+    cin >> num1 >> num2;
+    cout << num1+num2 << endl;
+    cout << "do you want to try again" << endl;
+    cin >> ch;
+}while(ch == 'y');
+}
+
+*/
+//================================
+Q3
+What are the primitive data types in C++? (Mention at least 5 types)
+int - short - long long - float - double -bool - char
+//===============================
+Q4
+Write a Function that takes an Integer Array and returns the Average of its
+elements. Then, call it in the “Main” function.
+----------------
+/*
+#include <iostream>
+using namespace std;
+
+float average(int arr[],int size){
+    float sum =0;
+    for(int i=0; i<size;i++){
+        sum += arr[i];
+    }
+    return sum /size;
+}
+
+
+int main() {
+int arr[5] = {1,2,3,4,5};
+
+cout << average(arr,5);
+}
+
+*/
+//===============================
+Q5
+Write a Function that takes 3 Integers and returns the maximum value. Then,
+call it in the “Main” function.
+/*
+#include <iostream>
+using namespace std;
+
+int maximum(int n1 , int n2 , int n3){
+     int max;
+    if(n1 > n2 && n1 > n3) max = n1;
+    else if(n2 > n1 && n2 > n3) max = n2;
+    else {
+        max = n3;
+    }
+   
+    return max;
+}
+
+int main() {
+cout << "max is " << maximum(4 , 5 , 2);
+}
+
+*/
+//===========================
+Q6
+Write a Function that takes 2 Integers and Swaps them Using Pointers. Then,
+call it in the “Main” function.
+/*
+void swap(int* x , int* y){
+    int tmp = *x;
+    *x = *y;
+    *y = tmp;
+}
+
+int main() {
+    
+int x= 5 , y = 10;
+
+swap(&x,&y);
+cout << x << endl << y;
+}
+*/
+//================================
+Q7
+//correct version 
+/*
+for (int i = 1; i <= 5; i++)
+{
+    for (int j = 1; j <= 5; j++)
+    {
+        if (i == j){
+            cout << i << " ";
+            cout << j << endl;
+        }
+    }
+}
+*/
+//=============================
+Q8
+
+/*
+
+*
+* *
+*   *
+*     *
+* * * * *
+
+*/
+
+
+
+
+
+
+
+

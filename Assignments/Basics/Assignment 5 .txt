@@ -1,0 +1,108 @@
+// Assignment 5 - 2D array MATRIX
+// #include <iostream>
+// using namespace std;
+// int main (){
+
+// int num;
+// cin >> num;
+
+// int arr[num][num];
+// for(int i=0; i< num; i++){
+//     for(int j=0; j< num; j++){
+//         cin >> arr[i][j];
+//     }
+// }
+// int sum = 0;
+// for(int i=0; i< num; i++){
+//     for(int j=0; j< num; j++){
+//         if(i == j){
+//         sum += arr[i][j];
+//     }
+//     }
+// }
+// cout << sum;
+// }
+// Print single number the sum of the main diagonal.
+//===================================
+// #include <iostream>
+// using namespace std;
+// int main (){
+// int num;
+// cin >> num;
+
+// int arr[num][num];
+// for(int i=0; i< num; i++){
+//     for(int j=0; j< num; j++){
+//         cin >> arr[i][j];
+//     }
+// }
+// int arr2[num][num];
+// for(int i=0; i< num; i++){
+//     for(int j=0; j< num; j++){
+//         cin >> arr2[i][j];
+//     }
+// }
+// int sum[num][num];
+// for(int i=0; i< num; i++){
+//     for(int j=0; j< num; j++){
+//         sum[i][j] = arr[i][j] + arr2[i][j];
+//         cout << sum[i][j] << " " ;
+//     }
+//     cout << endl;
+// }
+// }
+
+//====================================
+
+// #include <iostream>
+// using namespace std;
+// int main (){
+// int n;
+// cin >> n;
+
+// int arr[n][n];
+// for(int i=0; i< n; i++){
+//     for(int j=0; j< n; j++){
+//         cin >> arr[i][j];
+//     }
+// }
+// for(int i=0; i< n; i++){
+//     int sum =0;
+//     for(int j=0; j< n; j++){
+//         sum += arr[i][j];
+//     }
+//     cout << sum << endl;
+// }
+// }
+//=================================
+ 
+#include <iostream>
+using namespace std;
+
+int main() {
+int num;
+cin >> num;
+
+int arr[num][num];
+for (int i = 0; i < num; i++) {
+   for (int j = 0; j < num; j++) {
+        cin >> arr[i][j];
+}}
+bool issymmetric = true;
+
+for (int i = 0; i < num; i++) {
+    for (int j = 0; j < num; j++) {
+    if (arr[i][j] != arr[j][i]) {
+        issymmetric = false;
+        break;
+    }
+}
+if (!issymmetric) break;
+    }
+
+if (issymmetric)
+    cout << "Symmetric";
+else
+    cout << "Asymmetric";
+}
+

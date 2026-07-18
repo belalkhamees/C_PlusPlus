@@ -1,0 +1,140 @@
+// ASSIGNMENT 7   passing array to function - RECURSION Function
+// #include <iostream>
+// using namespace std;
+
+// void print_arr(int arr[],int size){
+//   for(int i=0; i<size;i++){
+//     cout << arr[i] << " ";
+// }
+// }
+// int main() {
+// int size;
+// cin >> size;
+
+// int arr[100];
+// for(int i=0; i<size; i++){
+//   cin >> arr[i];
+// }
+// print_arr(arr,size);
+// }
+//function to print array elements
+//=============================
+// #include <iostream>
+// using namespace std;
+
+// int sum(int arr[],int size){
+//   int sum = 0; 
+//   for(int i=0; i<size;i++){
+//    sum += arr[i];
+//   }
+//   return sum;
+// }
+// int main(){
+// int size;
+// cin >> size;
+
+// int arr[100];
+// for(int i=0; i<size; i++){
+//   cin >> arr[i];
+// }
+// cout << sum(arr,size);
+// }
+////function to sum array elements
+// ==============================
+// #include <iostream>
+// using namespace std;
+
+// int sum(int arr[][100], int size){
+// int sum = 0;
+// for(int i=0; i< size; i++){
+//       sum += arr[i][i];
+// }
+// return sum;
+// }
+// void print(int x){
+//   cout << x;
+// }
+// int main (){
+// int size;
+// cin >> size;
+
+// int arr[100][100];
+// for(int i=0; i< size; i++){
+//     for(int j=0; j< size; j++){
+//         cin >> arr[i][j];
+//     }
+// }
+// int result = sum(arr,size);
+// print(result);
+// }
+//function to sum 2d array elements
+//===============================
+
+// #include <iostream>
+// using namespace std;
+
+// int max(int arr[],int size){
+//   int max = arr[0];
+//   for(int i=0; i<size;i++){
+//     if(arr[i] > max) max = arr[i];
+//   }
+//   return max;
+// }
+
+// int min(int arr[],int size){
+//   int min = arr[0];
+//   for(int i=0; i<size;i++){
+//     if(arr[i] < min) min = arr[i];
+//   }
+//   return min;
+// }
+// int main(){
+// int size;
+// cin >> size;
+
+// int arr[100];
+// for(int i=0; i<size; i++){
+//   cin >> arr[i];
+// }
+// cout << max(arr,size) << endl;
+// cout << min (arr,size);
+// }
+//passing array to function
+//==========================
+// #include <iostream>
+
+// using namespace std;
+
+// int rev_num(int num,int rev = 0){
+// if(num == 0) return rev;
+// return rev_num(num / 10 , rev *10 +(num %10) ) ;
+
+// }
+// int main(){
+
+// int num;
+// cin >> num;
+// cout << rev_num(num);
+// }
+//reversed num by recursion
+//=====================================
+// #include <iostream>
+
+// using namespace std;
+
+// int max_num(int num){
+// if (num < 10)
+//     return num;
+// return (num % 10 > max_num(num / 10))
+//        ? num % 10
+//        : max_num(num / 10);
+// }
+// int main(){
+
+// int num;
+// cin >> num;
+// cout << max_num(num);
+// }
+//function max num by recusion
+//=====================================
+

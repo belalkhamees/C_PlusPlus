@@ -1,0 +1,245 @@
+//oop Assignment 1 
+//Q1
+/*
+
+class Circle{
+private:
+double radius;
+string color;
+
+public:
+Circle():radius(1.0),color("red"){}
+Circle(double radius):radius(radius){}
+Circle(double radius , string color):radius(radius),color(color){}
+
+void set_radius(double radius){
+    this -> radius = abs(radius);
+}
+void set_color(const string& color){
+    this -> color = color;
+}
+double get_radius()const{
+    return radius;
+}
+const string& get_color()const{
+    return color;
+}
+double get_area()const{
+    return PI * radius * radius;
+}
+};
+float PI = 3.14;
+*/ 
+//============================================
+//Q2
+/*
+
+class Employee{
+
+private:
+int id, salary;
+string firstName, lastName;
+
+public:
+
+Employee(int id , string firstName, string lastName, int salary):id(id),firstName(firstName), lastName(lastName),salary(salary){}
+
+int get_id()const{
+    return id;
+}
+const string& get_firstName()const{
+    return firstName;
+}
+const string& get_lastName()const{
+    return lastName;
+}
+string get_name()const{
+    return firstName + " " + lastName;
+}
+
+int get_salary()const{
+    return salary;
+}
+
+void set_salary(int salary){
+    this-> salary = salary;
+}
+
+int get_annual_salary()const{
+    return salary * 12;
+}
+int raise_salary(float percent){
+    int raise = salary * (percent / 100);
+    return salary += raise; 
+}
+};
+
+*/
+//=======================================
+//Q3
+/*
+
+struct Pair{   //return status - single responsibility 
+                  //class Pair{}  
+public:
+double balance;
+bool status;
+
+Pair():balance{},status{}
+{}
+Pair(double balance, bool status):balance(balance),status(status){}
+};
+
+class Account{
+
+private:
+string id;
+string name;
+double balance;
+
+public:
+
+Account(string id, string name):id(id),name(name),balance(0){}
+Account(string id, string name , double balance):id(id),name(name),balance(balance){}
+
+const string& get_id()const{
+    return id;
+}
+const string& get_name()const{
+    return name;
+}
+double get_balance()const{
+    return balance;
+}
+Pair credit(double amount){
+    if(amount > 0){
+    balance += amount;
+    return {balance,true};
+    }
+    return {balance,false};
+}
+
+Pair debit(double amount){
+    if(amount <= balance && amount > 0){
+    balance -= amount;
+    return {balance,true};
+    }
+    return {balance,false};
+}
+
+string operation_report(Pair operation){
+    if(operation.status){
+    return "successful opration, your balance is: " + to_string(operation.balance) + "\n";
+    }else{
+    return "failed opration, your balance is: " + to_string(operation.balance) + "\n";
+    }
+}
+
+Pair transfer_to(Account& another, double amount){
+    if(amount <= balance && amount > 0){
+    debit(amount);
+    another.credit(amount);
+    return {balance,true};
+    }
+    return {balance,false};
+}
+};
+int main(){
+Account belal("123","belal",1000);
+
+Account another("456","another",1000);
+
+cout << belal.operation_report(belal.transfer_to(another,200));
+
+}
+
+
+*/
+//==========================================
+//Q4
+/*
+class Time{
+private:
+int hour;
+int minute;
+int second;
+
+
+public:
+
+Time(int hour,int minute,int second):hour(hour),minute(minute),second(second){}
+    
+int get_hour()const{
+    return hour;
+}  
+int get_minute()const{
+    return minute;
+}
+int get_second()const{
+    return second;
+} 
+
+void set_hour(int hour){
+    this-> hour = hour;
+}
+void set_minute(int minute){
+    this-> minute = minute;
+}
+void set_second(int second){
+    this-> second = second;
+}  
+void set_time(int hour,int minute,int second){
+    this-> hour = hour;
+    this-> minute = minute;
+    this-> second = second;
+}  
+Time& nextSecond(){
+    this-> second++; 
+    if(second >= 60){
+        minute++;
+        second =0;
+    }
+    if(minute >= 60){
+        hour++;
+        minute = 0;
+    }
+    if(hour > 23){
+    hour = 0;
+    }
+    return *this;
+}     
+Time& previousSecond(){
+    this-> second--; 
+    if(second < 0){
+        minute--;
+        second = 59;
+    }
+    if(minute < 0){
+        hour--;
+        minute = 59;
+    }
+    if(hour < 0){
+    hour = 23;
+    }
+    return *this;
+}     
+string showTime() const {
+    string h = (hour < 10 ? "0" : "") + to_string(hour);
+    string m = (minute < 10 ? "0" : "") + to_string(minute);
+    string s = (second < 10 ? "0" : "") + to_string(second);
+    return h + ":" + m + ":" + s; 
+}
+};
+*/
+
+
+
+
+
+
+
+
+
+
+
+

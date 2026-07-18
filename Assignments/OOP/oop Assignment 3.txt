@@ -1,0 +1,197 @@
+//Assignment oop 3
+//Q1
+
+/*
+
+    #include<iostream>
+    using namespace std;
+
+    class Payment_method{
+    private:
+    string account_number;
+    string transaction_history[5];
+    double transaction_limit;
+    string currency;
+    int transaction_count;
+
+    public:
+    Payment_method(string account_number,string currency)
+    : account_number(account_number), currency(currency) ,transaction_limit(10000) 
+    ,transaction_count(0){}
+
+    virtual void pay(double amount) = 0;
+    virtual bool validate_payment_details() = 0;
+    virtual double calculate_transaction_fee(double amount){
+        return amount * 0.02;
+    }
+    const string& get_account_number()const{
+        return account_number;
+    }
+    void set_transaction_limit(double transaction_limit){
+        this -> transaction_limit = transaction_limit;
+    }
+    void set_transaction_count(int transaction_count){
+        this -> transaction_count = transaction_count;
+    }
+    void set_currency(const string& currency){
+        this -> currency = currency;
+    }
+    const string& get_currency()const{
+        return currency;
+    }
+
+    void add_transaction(const string& transaction){
+    if (transaction_count < 5) {
+            transaction_count++;
+        }
+
+        for (int i = transaction_count - 1; i > 0; i--) {
+            transaction_history[i] = transaction_history[i - 1];
+        }
+        transaction_history[0] = transaction;
+    }
+
+    void print_transaction_history(){
+    for (int i = 0; i < transaction_count; i++) {
+            cout << transaction_history[i] << endl;
+        }
+    }
+    };
+
+    class Debit_card : public Payment_method{
+    string pin;
+
+    public:
+    Debit_card(const string& account_number,const string& currency,const string& pin)
+    :Payment_method(account_number,currency),pin(pin) {}
+
+    void pay(double amount){
+        cout << "processing payment using a debit card" << endl;
+        add_transaction("Debit card Payment: " + to_string(amount));
+    }
+
+    double calculate_transaction_fee(double amount){
+        return amount * 0.01;
+    }
+
+    bool validate_payment_details(){
+        if(pin.length() != 4){
+            cout << "Invalid PIN";
+            return false;
+        }
+        return true;
+    }
+    };
+
+    class Credit_card : public Payment_method{
+    string cvv;
+    public:
+    Credit_card(const string& account_number,const string& currency,const string& cvv)
+    :Payment_method(account_number,currency),cvv(cvv) {}
+
+    void pay(double amount){
+        cout << "processing payment using a credit card" << endl;
+        add_transaction("Credit card Payment: " + to_string(amount));
+    }
+
+    double calculate_transaction_fee(double amount){
+        return amount * 0.03;
+    }
+    bool validate_payment_details(){
+        if(cvv.length() != 3){
+            cout << "Invalid CVV";
+            return false;
+        }
+        return true;
+    }
+    };
+ 
+/*
+
+//=========================================
+//Q2
+
+/*
+
+    #include<iostream>
+    using namespace std;
+
+class Vehicle{
+    string model,registration_number;
+    double fuel_capacity,fuel_consumption;
+    int speed;
+public:
+Vehicle(string model,string registration_number,double fuel_capacity,double fuel_consumption,int speed)
+:model(model),registration_number(registration_number),fuel_capacity(fuel_capacity),
+fuel_consumption(fuel_consumption),speed(speed) {}
+
+const string& get_model()const{
+    return model;
+}
+const string& get_registration_number()const{
+    return registration_number;
+}
+double get_fuel_capacity()const{
+    return fuel_capacity;
+}
+double get_fuel_consumption()const{
+    return fuel_consumption;
+}
+int get_speed()const{
+    return speed;
+}
+
+virtual void display_info()const{
+cout << "Model: " << get_model() << endl
+     << "registration number: " << get_registration_number() << endl
+     << "speed: " << get_speed() << " Km/hour" << endl
+     << "fuel capacity: " << get_fuel_capacity() << " liters" << endl
+     << "fuel consumption: " << get_fuel_consumption() << " liter/km" << endl;
+}
+};
+
+class Bus : public Vehicle{
+int num_passengers;
+
+public:
+Bus(string model,string registration_number,double fuel_capacity,double fuel_consumption,
+int speed,int num_passengers)
+:Vehicle(model,registration_number,fuel_capacity,fuel_consumption,speed),num_passengers(num_passengers)
+{}
+
+void set_num_passengers(int num_passengers){
+    this -> num_passengers = num_passengers;
+}
+int get_num_passengers()const{
+    return num_passengers;
+}
+
+void display_info()const{
+    Vehicle::display_info();
+    cout << "num passengers: " << get_num_passengers() << endl;
+}
+};
+
+class Truck : public Vehicle{
+float cargo_weight_limit;
+
+public:
+Truck(string model,string registration_number,double fuel_capacity,double fuel_consumption,
+int speed,float cargo_weight_limit):
+Vehicle(model,registration_number,fuel_capacity,fuel_consumption,speed),
+cargo_weight_limit(cargo_weight_limit) {}
+
+void set_cargo_weight_limit(float weight){
+    cargo_weight_limit = weight;
+}
+float get_cargo_weight_limit()const{
+    return cargo_weight_limit;
+}
+void display_info()const{
+    Vehicle::display_info();
+    cout << "cargo weight limit: " << get_cargo_weight_limit() << " Kilo grams" << endl;
+}
+};
+
+
+*/

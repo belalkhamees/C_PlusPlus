@@ -1,0 +1,177 @@
+//  Assignment 6 - Functions 
+
+#include <iostream>
+using namespace std;
+
+void print(int num){
+    cout << num;
+}
+
+
+int main() {
+
+int x;
+cin >> x;
+
+print(x);
+
+}
+//================================
+// #include <iostream>
+// using namespace std;
+
+// int add(int x, int y, int z){
+//     return x+y+z;
+// }
+// float avg(int num){
+//     return float(num) /3;
+// }
+
+// int main(){
+    
+// int x,y,z;
+// cin >> x >> y >> z;
+
+// int sum = add (x,y,z);
+
+// float average = avg(sum);
+ 
+// cout << average;   
+// }
+
+
+//==================================
+#include <iostream>
+using namespace std;
+
+
+bool isprime(int n){
+    if (n < 2) return false;
+    for(int i = 2; i <=n/2; i++){ 
+     if(n %i == 0) return false;
+}
+      return true;
+}
+
+void result(bool x){
+   if(x) cout << boolalpha << true;
+   else cout << boolalpha << false;
+}
+
+int main (){
+    
+int num;
+cin >> num;
+
+bool n = isprime(num);
+
+result(n);
+}
+//================================
+
+#include <iostream>
+using namespace std;
+
+bool is_even(int x){
+    return x %2 == 0 ? true : false;
+}
+
+int main(){
+ 
+ int x;
+ cin >> x;
+ 
+ bool result = is_even(x);
+ 
+ cout << boolalpha << result;
+}
+
+//================================
+
+#include <iostream>
+using namespace std;
+
+int cube(int x){
+    return x*x*x;
+}
+
+int main (){
+    
+int n;
+cin >> n;
+
+int result = cube(n);
+    
+cout << result;
+}
+//=====================================
+
+
+#include <iostream>
+using namespace std;
+
+float Diameter(float x){
+    return x*2;
+}
+float Circumference(float x){
+    return 2 * 3.1416 *x;
+}
+float area(float x){
+    return 3.1416 * (x*x);
+}
+
+int main (){
+
+float n;
+cin >> n;
+
+float d = Diameter(n);
+float c = Circumference(n);
+float a = area(n);
+
+cout << "Diameter = " << d << " units" << endl;
+cout << "Circumference = " << c << " units" << endl;
+cout << "Area = " << a << " square units";
+}
+//==============================
+#include <iostream>
+using namespace std;
+
+
+
+void divisors(int x){
+    for(int i =1; i<=x; i++){
+        if(x %i == 0) {
+        cout << i << " ";
+        }
+    }
+}
+
+int main (){
+
+int n;
+cin >> n;
+
+divisors(n);
+}
+//==============================
+#include <iostream>
+using namespace std;
+
+
+
+bool divisable(int x){
+ return  x % 3 == 0 && x % 4 == 0;
+}
+
+int main (){
+
+int n;
+cin >> n;
+
+bool result = divisable(n);
+
+cout << boolalpha << result;
+}
+
+

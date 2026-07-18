@@ -1,0 +1,322 @@
+//oop Assignment 2
+//Q1
+/*
+
+class Circle{
+private:
+double radius;
+string color;
+
+public:
+Circle():radius(1.0),color("red"){}
+Circle(double radius):radius(radius){}
+Circle(double radius , const string& color):radius(radius),color(color){}
+
+void set_radius(double radius){
+    this -> radius = abs(radius);
+}
+void set_color(const string& color){
+    this -> color = color;
+}
+double get_radius()const{
+    return radius;
+}
+const string& get_color()const{
+    return color;
+}
+double get_area()const{
+    return PI * radius * radius;
+}
+
+string get_info()const{
+    return "radius = " + to_string(radius) 
+    + "\ncolor = " + color
+    +"\narea = " + to_string(get_area());
+} 
+};
+
+class Cylinder : public Circle{
+double height;
+
+public:
+Cylinder():height(1){}
+Cylinder(double radius):Circle(radius),height(1){}
+Cylinder(double radius,double height):Circle(radius),height(height){}
+Cylinder(double radius,double height,string color):Circle(radius,color),
+height(height){}
+
+double get_height()const{
+    return height;
+}
+void set_height(double height){
+    this->height = abs(height); 
+}
+double get_volume()const{
+    return Circle::get_area() * height;
+}
+double get_area()const{
+    return 2 * PI * Circle::get_radius() * (height + Circle::get_radius());
+
+}
+string get_info()const{
+return Circle::get_info()
+    +"\nheight = " + to_string(height)
+    +"\nvolume = " + to_string(get_volume());
+}
+};
+float PI = 3.14;
+
+*/
+
+//=======================================
+//Q2
+
+/*
+class Customer{
+int id;
+string name;
+int discount;
+
+public:
+Customer(int id,const string& name,int discount):id(id),name(name),discount(discount){}
+
+int get_id()const{
+    return id;
+}
+
+const string& get_name()const{
+    return name;
+}
+void set_discount(int discount){
+    this-> discount = abs(discount);
+}
+int get_discount()const{
+    return discount;
+}
+
+string get_info()const{
+    return "id: " + to_string(id)
+    +"\nname: " + name
+    +"\ndiscount = " + to_string(discount);
+}
+
+};
+
+class Invoice{
+private:
+int id;
+Customer customer;
+double amount;
+
+public:
+Invoice(int id,const Customer& customer,double amount):id(id),amount(amount),
+customer(customer){}
+
+int get_id()const{
+    return id;
+}
+const Customer& get_customer()const{
+    return customer;
+}
+double get_amount()const{
+    return amount;
+}
+void set_amount(double amount){
+    this ->amount = abs(amount);
+}
+double get_amount_after_discount()const{
+    return amount - (amount * customer.get_discount()/100.0);
+}
+string get_info()const{
+    return customer.get_info() 
+    + "\nid: " + to_string(id)
+    +"\namount = " + to_string(amount)
+    +"\namount after discount = " + to_string(get_amount_after_discount());
+}
+};
+
+*/
+===================================
+//Q3
+/*
+
+class Date{
+private:
+int day;
+int month;
+int year;
+
+public:
+Date(int day , int month, int year):day(day),month(month),year(year) {}
+
+void set_date(int day , int month, int year){
+    this -> day = abs(day);
+    this -> month = abs(month);
+    this -> year = abs(year);
+}
+void set_day(int day){
+    this -> day = abs(day);
+}
+void set_month(int month){
+    this -> month = abs(month);
+}
+void set_year(int year){
+    this -> year = abs(year);
+} 
+int get_day()const{
+    return day;
+}
+int get_month()const{
+    return month;
+}
+int get_year()const{
+    return year;
+}
+
+string get_date(){
+    return "day : " + to_string(day)
+    +"\nmonth : " + to_string(month)
+    +"\nyear : " + to_string(year);
+}
+};
+//---------------------
+class Person{
+private:
+string first_name, last_name;
+int age ,id;
+
+public:
+Person(const string& first_name, const string& last_name,int age, int id):first_name(first_name),last_name(last_name),age(age),id(id){}
+
+const string& get_first_name()const{
+    return first_name;
+}
+const string& get_last_name()const{
+    return last_name;
+}
+string get_info()const{
+    return "first name: " + first_name
+    +"\nlast name: " + last_name
+    +"\nage: " + to_string(age)
+    +"\nid: " + to_string(id);
+}
+};
+//-----------
+class Doctor : public Person{
+private:
+string speciality;
+
+public:
+Doctor(const string& first_name, const string& last_name,int age, int id, string speciality) :Person( first_name, last_name, age,  id),speciality(speciality){}
+
+void set_speciality(string speciality){
+    this -> speciality = speciality;
+}
+const string& get_speciality()const{
+    return speciality;
+}
+};
+//--------------------------
+class Patient : public Person{
+private:
+Date dob, admit_date, leave_date;
+Doctor physican;
+
+public:
+Patient(const string& first_name, const string& last_name,int age, int id, Date dob,Date admit_date, Date leave_date, Doctor physican):Person( first_name, last_name, age,  id),dob(dob), admit_date(admit_date), leave_date(leave_date),physican(physican){}
+
+const Date& get_dob()const{
+    return dob;
+}
+const Date& get_admit_date()const{
+    return admit_date;
+}
+const Date& get_leave_date()const{
+    return leave_date;
+}
+void set_leave_date(Date leave_date){
+    this -> leave_date = leave_date;
+}
+void set_physican(Doctor physican){
+    this -> physican = physican;
+}
+const Doctor& get_physican()const{
+    return physican;
+} 
+};
+
+int main() {
+
+Date dob(3,11,2001);
+Date admit_date(19,1,2026);
+Date leave_date(20,1,2026);
+
+Person per("belal","khamees",24,8);
+
+Doctor doc("khamis","hussien",60,22,"head");
+
+Patient p1("belal","khamees",24,88,dob,admit_date,leave_date,doc);
+
+cout << p1.get_physican().get_info();
+
+}
+//===========================================
+//Q4
+/*
+Difference between composition and inheritance is:
+
+1- composition:
+-shows the (has a) relationship between classes. 
+-it happens when the class has an object attribute from another class. 
+-if the owner object of a class is destroyed ,the contained object of the other 
+class is destroyed too.
+/*
+class Engine{
+int horsePower;
+
+public:
+Engine(int hp):horsePower(hp){}
+
+};
+class Car{
+Engine engine;
+
+public:
+
+Car():engine(100){}     //default constructor of owner object must initialize the contained object 
+if contained has no default constructor 
+
+Car(int hp):engine(hp){}  //parameterized constructor 
+
+};
+*/
+
+this example shows the has a relationship - car has an engine .
+
+//----------------------
+2- inheritance:
+
+-shows the (is a) relationship between base class and sub classes.
+-its permits code reusability instead of repetition of the same attributes in each class.  
+-the subclass inherits all the capabilities of the base class but can add its own features
+(local attribute) , and base class is unchanged by this process.
+
+/*
+class person{
+string name ,email;
+public:
+person(string name, string email):name(name),email(email){}
+};
+
+class student : public person{
+float gpa;
+
+public:
+student(string name,string email,float gpa):person(name,email),gpa(gpa){}
+};
+*/
+
+this example shows how can child class benefits from parent class whose has an essential attributes for child like name , because student must has a name and there is no default values can initialized ,so i used parameterized constructor only. 
+
+
+

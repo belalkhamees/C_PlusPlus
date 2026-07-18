@@ -1,0 +1,114 @@
+// Assignment 1 - cin cout - counting - sum - avg
+// Q1
+//  #include<iostream>
+//  using namespace std;
+
+// int main(){
+
+//     cout<<"enter an integer number: ";
+//     int num;
+//     cin >> num;
+//     cout << "your enterd is: " << num << "\n";
+// }
+//======================================
+// Q2
+// #include<iostream>
+// using namespace std;
+// int main(){
+
+// int first_num;
+// int second_num;
+// int third_num;
+
+// cout<< "Please enter the first number: ";
+// cin >> first_num;
+
+// cout<< "Please enter the second number: ";
+// cin >> second_num;
+
+// cout<< "Please enter the third number: ";
+// cin >> third_num;
+
+// cout<< "The sum of the three integers is: " <<  first_num + second_num +
+// third_num << endl;
+// }
+//======================================
+// Q3
+// #include<iostream>
+// using namespace std;
+// int main(){
+// int first_num;
+// int second_num;
+// int third_num;
+
+// cout<< "Please enter the first number: ";
+// cin >> first_num;
+
+// cout<< "Please enter the second number: ";
+// cin >> second_num;
+
+// cout<< "Please enter the third number: ";
+// cin >> third_num;
+
+// float average = first_num + second_num + third_num;
+// cout<< "The average is: " << average/3 << endl;
+// }
+//=========================================
+// Q4
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     float width;
+//     float height;
+
+//     cout<< "Enter the width: ";
+//     cin >> width;
+//     cout<< "Enter the height: ";
+//     cin >> height;
+
+//     float perimeter = 2*(width + height);
+//     float area = width * height;
+// cout<< "The perimeter of the rectangle is: "<< perimeter << endl;
+// cout<< "The area of the rectangle is: "<< area << endl;
+// }
+//=======================================
+
+// Q5
+// #include<iostream>
+// using namespace std;
+// int main(){
+
+// int num;
+// cout<<"Enter a three-digit number: ";
+// cin >>num;
+
+// int sum = 0;
+
+//     sum+= num % 10;
+//     num = num / 10;
+
+//     sum+= num % 10;
+//     num = num / 10;
+
+//     sum+= num % 10;
+
+// cout<<"The sum of the digits is: "<< sum << endl;
+// }
+//========================================
+// Q6
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     int second;
+//     cout<< "Enter the time in seconds: ";
+//     cin >> second;
+
+//     int hour = second / 3600;
+//     int minute = (second % 3600) / 60;
+//     int sec = second % 60;
+
+// cout<< "The equivalent time is: "<< hour <<" hours "<< minute <<" minute "<<
+// sec <<" seconds"<< endl;
+// }
+
+

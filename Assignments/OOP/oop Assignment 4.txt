@@ -1,0 +1,128 @@
+//Assignment 12 - Part 2 - OOP Assignment 4
+//Q1
+/*
+#include <iostream>
+using namespace std;
+
+template <typename Ty>
+Ty maximum(const Ty& a, const Ty& b) {
+    return (a > b) ? a : b;
+}
+
+template<>
+string maximum<string>(const string& a, const string& b) {
+    return (a.length() > b.length()) ? a : b;
+}
+
+int main() {
+
+string b = {"belalkhamees"} , c = {"belal"} ;
+// int b =10,c = 5;
+
+cout << maximum(b,c);
+}
+*/
+//================================
+//Q2
+/*
+#include <iostream>
+using namespace std;
+
+
+template <typename ty>
+void swap(const ty& v1,const ty& v2){
+    ty temp = v1;
+    v1 = v2;
+    v2 = temp;
+}
+
+int main(){
+
+string a = {"belal"} , b = {"ahmed"};
+// int a = 10 , b = 5; 
+swap (a,b);
+
+cout << a;
+
+}
+*/
+//================================
+//Q3
+/*
+#include <iostream>
+using namespace std;
+
+template<typename ty>
+
+class Calculator{
+public:
+    static ty add(ty x, ty y){
+        return x + y;
+    }
+    static ty subtract(ty x, ty y){
+        return x - y;
+    }
+    static ty multiply(ty x, ty y){
+        return x * y;
+    }
+    static ty divide(ty x, ty y){
+        return x / y;
+    }
+};
+
+
+int main(){
+    
+double a = 10.5 , b = 5; 
+
+cout << Calculator<double>::multiply(a,b);
+}
+*/
+//===========================================
+//Q4
+/*
+#include <iostream>
+#include <exception>
+
+using namespace std;
+
+class zero_ex : public exception{
+public:
+  const char* what()const throw(){
+      return "division by zero is not allowed";
+  }  
+};
+class negative_ex : public exception{
+public:
+  const char* what()const throw(){
+      return "negative division is not allowed";
+  }  
+};
+
+int divide(int x, int y){
+    if(y == 0)throw zero_ex();
+    else if(y < 0)throw negative_ex();
+    else {
+    return x / y;
+}
+}
+
+int main(){
+    
+int x,y;
+cin >> x >> y;
+
+try{
+    cout << divide(x,y);
+}
+catch(exception &e){
+    cout << e.what();
+}
+
+}
+*/
+
+
+
+
+

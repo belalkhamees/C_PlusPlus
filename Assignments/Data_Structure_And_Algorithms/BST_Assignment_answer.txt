@@ -1,0 +1,395 @@
+// BST Class with Balancing Function using dfs algorithm
+//------------------------------------------------------
+
+//Node Struct
+
+#pragma once
+
+template<typename ty>
+struct NodeBst
+{
+	ty data;
+
+	NodeBst* left, *right;
+
+	NodeBst(const ty& data):data(data), left(nullptr), right(nullptr)
+	{}
+};
+
+//------------------------------------
+//  BST class
+
+
+#pragma once
+#include "NodeBst.h"
+#include <iostream>
+#include <exception>
+#include <stack>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+template<typename ty>
+
+class BST
+{
+	using node = NodeBst<ty>;
+	using nodePtr = node*;
+
+	nodePtr root;
+
+	// dfs post-order clear -->  left right node  - delete child nodes then parent
+	nodePtr clear_bst_with_dfs(nodePtr current_node) {
+		if (current_node == nullptr) return nullptr;
+
+		current_node->left = clear_bst_with_dfs(current_node->left);
+		current_node->right = clear_bst_with_dfs(current_node->right);
+
+		delete current_node;
+
+		return nullptr;
+	}
+
+	//-------------------------------------------------
+	
+	// dfs  pre-order copy -->   node left right  - O(n log n)
+	//void copy_bst_with_dfs(nodePtr current_node){    
+	//	if (current_node == nullptr) return;
+
+	//	this->insert(current_node ->data);
+
+	//	copy_bst_with_dfs(current_node->left);
+	//	copy_bst_with_dfs(current_node->right);
+	//}
+	
+	// dfs pre-order copy -->   node left right  - O(n) - best version 
+	nodePtr copy_dfs(nodePtr current_node) {
+		if (current_node == nullptr) return nullptr;
+
+		nodePtr new_node = new node(current_node->data);
+
+		new_node ->left = copy_dfs(current_node->left);
+		new_node->right = copy_dfs(current_node->right);
+
+		return new_node;
+	}
+
+
+	//-------------------------------------------------
+
+	// bfs copying by generations - O(n log n) 
+	void copy_bst_with_bfs(nodePtr start_node) {
+		queue<nodePtr> q;
+
+		q.push(start_node);
+
+
+		while (!q.empty()) {
+			auto node = q.front();
+
+			this->insert(node->data);
+
+			if (node->left) q.push(node->left);
+			if (node->right) q.push(node->right);
+			q.pop();
+
+		}
+
+	}
+
+
+public:
+	
+
+
+	//default constractor
+	BST() : root(nullptr) {}
+	//destructor
+	~BST() { clear(); }
+
+	//copy constructor with dfs - O(n)
+	//BST(const BST& right):root(nullptr){
+	//	
+	//	copy_dfs(right.root);
+	//}
+
+	BST(const BST& right) :root(nullptr) {
+
+		root = copy_dfs(right.root);
+	}
+
+
+	//assignment operator overloading
+	BST& operator=(const BST& right) {
+		this->clear();
+		copy_dfs(right.root);
+	}
+
+
+
+	bool empty() const { return root == nullptr; }
+
+	class iterator {
+	public:
+
+		nodePtr pointer;
+		stack<nodePtr> stack;
+
+		iterator(): pointer(nullptr) {}
+		iterator(nodePtr _pointer ) : pointer(_pointer) {}
+
+		bool operator==(const iterator& right) const {
+			return (pointer == right.pointer);
+		}
+		bool operator !=(const iterator& right) const {
+			return !(*this == right);
+		}
+
+		const ty& operator*() const {
+			if (pointer == nullptr) throw exception("Null pointer");
+			return pointer->data;
+		}
+
+		iterator& operator++() {
+			if (stack.empty()) { 
+				pointer = nullptr;
+				return *this; 
+			}
+
+			auto top = stack.top();
+			stack.pop();
+
+			push_left(top->right);
+
+			pointer = ( stack.empty() ? nullptr : stack.top() );
+
+			return *this;
+
+		}
+
+		void push_left(nodePtr node) {
+			if (!node) return;
+			stack.push(node);
+
+			while (node->left) {
+				stack.push(node->left);
+				node = node->left;
+			}
+
+		}
+
+		iterator& operator++(int) {
+			if (stack.empty()) {
+				pointer = nullptr;
+				return *this;
+			}
+
+			auto top = stack.top();
+			stack.pop();
+
+			push_left(top->right);
+
+			pointer = (stack.empty() ? nullptr : stack.top());
+
+			return *this;
+
+		}
+
+	};
+
+	iterator begin()const {
+		if (empty()) return iterator();
+		iterator itr;
+
+		auto ptr = root;
+
+		while (ptr) {
+			itr.stack.push(ptr);
+			ptr = ptr->left;
+		}
+
+		itr.pointer = itr.stack.top();
+		return itr;
+	}
+
+	iterator end()const { return iterator(); }
+	
+
+	// insert log(n)
+	pair<iterator, bool> insert(const ty& val) {
+		if (empty()) {
+			root = new node(val);
+			return { iterator(root),true};
+		}
+
+		auto ptr = root;
+
+		while (val != ptr->data) {
+
+			//look right
+			if (val > ptr->data) {
+				if (ptr->right == nullptr) {
+					ptr->right = new node(val);
+					return { iterator(ptr ->right),true };
+				}
+				else  ptr = ptr->right;				 
+			}
+			//look left
+			else {
+				
+				if (ptr->left == nullptr) {
+					ptr->left = new node(val);
+					return { iterator(ptr->left), true };
+				}
+				else  ptr = ptr->left;
+			}
+			
+		}
+		// data is found & false because im not insert it
+		return { iterator(ptr), false };
+
+
+	}
+
+	// find log(n)
+	iterator find(const ty& val) {
+      if(empty()) return iterator();
+
+		auto ptr = root;
+
+		while (ptr) {
+			if (val > ptr->data) ptr = ptr->right;
+			else if (val < ptr->data) ptr = ptr->left;
+			else return iterator(ptr);
+		}
+		return iterator();
+	}
+
+	// erase O(n)
+	void erase(ty val) {
+		if (empty()) return;
+
+		auto ptr = root;
+		auto parent = root;
+
+		while (true) {
+
+			if (val > ptr->data) {
+				if (ptr->right) {
+					parent = ptr;
+					ptr = ptr->right;
+				}
+				else return;
+			}
+
+			else if (val < ptr->data) {
+				if (ptr->left) {
+					parent = ptr;
+					ptr = ptr->left;
+				}
+				else return;
+			}
+
+			//ptr holding node to be deleted 
+			//parent holding parent node
+			//value is found
+			else {
+
+				//case 1&2 leaf & one child node
+				if (!ptr->right || !ptr->left) {
+					// root case
+					if (ptr == root) {
+						root = root->right ? root->right : root->left;
+						delete ptr;
+						return;
+					}
+
+					//tmp holding NoN-Null child if(existed)
+					auto tmp = (ptr->right ? ptr->right : ptr->left);
+
+					if (parent->right == ptr) parent->right = tmp;
+					else parent->left = tmp;
+
+					delete ptr;
+					return;
+				}
+				//case 3 two child (any node include root)
+				else {
+					//tmp = smallest big value i can replace it with node want to be deleted 
+					auto tmp = ptr->right, tmp_parent = ptr->right;
+					while (tmp->left) {
+						tmp_parent = tmp;
+						tmp = tmp->left;
+					}
+
+					if (tmp != tmp_parent) {
+						tmp_parent->left = tmp->right;
+						tmp->left = ptr->left;
+						tmp->right = ptr->right;
+					}
+					else tmp->left = ptr->left;
+
+					if (root == ptr) root = tmp;
+					else if (parent->right = ptr) parent->right = tmp;
+					else parent->left = tmp;
+
+					delete ptr;
+					return;
+
+				}
+			
+
+
+
+			}
+
+		}
+	}
+
+	// dfs - recursive clear with O(n) 
+	void clear() {
+		root = clear_bst_with_dfs(root);
+	}
+
+	private:
+	//functions to balance the tree
+	void extract_bst_to_vector(nodePtr current_node, vector<ty>& vec) {
+		if (current_node == nullptr) return;
+		
+		extract_bst_to_vector(current_node->left,vec);
+
+		vec.push_back(current_node->data);
+
+		extract_bst_to_vector(current_node->right,vec);
+
+	}
+
+	void balanced_insertion(vector<ty>& v, int left, int right) {
+		if (right < left) return;
+
+		int mid = (left + right) / 2;
+
+		insert(v[mid]);
+		balanced_insertion(v,left, mid -1);
+		balanced_insertion(v,mid+1 ,right);
+	}
+
+	public:
+	void balance() {
+		vector<ty> vec;
+		extract_bst_to_vector(root, vec);
+		clear();
+
+		balanced_insertion(vec, 0, vec.size() - 1);
+	}
+};
+
+//Build the BST structure, then for the next Tree, perform the following procedures to make it balanced :
+
+//1. Extract the BST into a Vector using DFS Algorithm with in - order
+//	traversal.
+// 
+//	2. Clear the existing BST.
+//	3. Reinsert the elements from the Vector back into the BST using a recursive
+//	approach(Similar to Merge Sort Algorithm).
